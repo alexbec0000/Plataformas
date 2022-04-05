@@ -64,6 +64,11 @@ public class principal extends javax.swing.JFrame {
 
         jtxtCantidad.setText("0");
         jtxtCantidad.setToolTipText("");
+        jtxtCantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtCantidadKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Distribuidor ");
 
@@ -198,6 +203,21 @@ public class principal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jbtnConfirmarActionPerformed
+
+    private void jtxtCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtCantidadKeyTyped
+        // TODO add your handling code here:
+        char caracter;
+        caracter = (evt.getKeyChar() + "").charAt(0);
+        if (jtxtCantidad.getText().length() < 9) {
+            if ((caracter + "").matches("[0-9]")) {
+                evt.setKeyChar(caracter);
+            } else {
+                evt.consume();
+            }
+        } else {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtxtCantidadKeyTyped
 
     /**
      * @param args the command line arguments
